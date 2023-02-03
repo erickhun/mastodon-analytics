@@ -371,6 +371,55 @@
       		legend: {
       			show: false,
       		},
+            annotations: {
+                points: [
+                {
+                    x: new Date('27 Oct 2022').getTime(),
+                    y: 3598722,
+                    marker: {
+                        size: 3,
+                        fillColor: '#fff',
+                        strokeColor: 'red',
+                        radius: 1,
+                        cssClass: 'apexcharts-custom-class'
+                    },
+                    label: {
+                        borderColor: '#FF4560',
+                        offsetY: 0,
+                        style: {
+                            color: '#fff',
+                            background: '#FF4560',
+
+                        },
+                        text: 'Elon Musk buys Twitter',
+                    }
+                },
+                {
+                    x: new Date('04 Nov 2022').getTime(),
+                    y: 3812125,
+                    marker: {
+                        size: 3,
+                        fillColor: '#fff',
+                        strokeColor: 'red',
+                        radius: 1,
+                        cssClass: 'apexcharts-custom-class'
+                    },
+                    label: {
+                        borderColor: '#FF4560',
+                        offsetY: 0,
+                        style: {
+                            color: '#fff',
+                            background: '#FF4560',
+                            fontSize: '13px',
+                            fontWeight: 300,
+                        },
+                        text: 'Twitter Layoffs',
+                    }
+                },
+
+            ]}
+
+
       	})).render();
       });
 
@@ -441,7 +490,8 @@
       		colors: [tabler.getColor("primary")],
       		legend: {
       			show: false,
-      		},
+      		}
+          
       	})).render();
       });
 
