@@ -1,0 +1,510 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Mastodon analytics</title>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%234f37f5%22></rect><path fill=%22%23fff%22 d=%22M53.83 63.00L53.83 63.00Q53.19 63.45 52.16 63.81Q51.13 64.17 49.86 64.17L49.86 64.17Q48.42 64.17 47.30 63.72Q46.17 63.27 45.72 62.28L45.72 62.28Q40.86 52.20 37.36 43.83Q33.84 35.46 31.68 29.97L31.68 29.97L31.32 29.97Q31.05 36.72 30.74 42.53Q30.43 48.33 30.06 53.87Q29.70 59.40 29.34 65.07Q28.98 70.74 28.63 77.22L28.63 77.22Q28.09 77.41 27.23 77.58Q26.38 77.77 25.38 77.77L25.38 77.77Q23.41 77.77 22.59 76.95Q21.79 76.14 21.79 74.61L21.79 74.61Q21.79 73.71 21.92 70.74Q22.05 67.77 22.32 63.54Q22.59 59.31 22.91 54.18Q23.23 49.05 23.63 43.74Q24.04 38.43 24.44 33.30Q24.84 28.17 25.20 23.94L25.20 23.94Q25.93 23.31 27.27 22.77Q28.63 22.23 30.34 22.23L30.34 22.23Q34.48 22.23 36.09 25.56L36.09 25.56Q37.80 29.07 39.56 32.99Q41.31 36.90 43.07 40.95Q44.83 45.00 46.49 48.96Q48.16 52.92 49.69 56.52L49.69 56.52L50.05 56.52Q52.03 51.75 54.00 47.12Q55.98 42.48 57.88 38.16Q59.77 33.84 61.47 30.06Q63.19 26.28 64.53 23.13L64.53 23.13Q65.34 22.68 66.61 22.46Q67.86 22.23 68.94 22.23L68.94 22.23Q73.17 22.23 73.80 25.11L73.80 25.11Q74.16 26.73 74.61 30.47Q75.06 34.20 75.52 39.06Q75.97 43.92 76.37 49.50Q76.77 55.08 77.14 60.26Q77.50 65.44 77.77 69.80Q78.03 74.16 78.22 76.68L78.22 76.68Q76.59 77.77 74.44 77.77L74.44 77.77Q73.08 77.77 72.05 77.09Q71.02 76.41 70.83 74.61L70.83 74.61Q70.39 68.04 70.03 61.56Q69.66 55.08 69.35 49.23Q69.03 43.38 68.77 38.48Q68.50 33.57 68.31 30.15L68.31 30.15L67.95 30.15Q66.97 32.67 65.66 35.82Q64.36 38.97 62.60 42.93Q60.84 46.89 58.69 51.89Q56.53 56.88 53.83 63.00Z%22></path></svg>" />
+
+    <meta name="description" content="Tabler comes with tons of well-designed components and features. Start your adventure with Tabler and make your dashboard great again. For free!"/>
+    <!-- CSS files -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+
+    <style>
+      @import url('https://rsms.me/inter/inter.css');
+      :root {
+      	--tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+      }
+      body {
+      	font-feature-settings: "cv03", "cv04", "cv11";
+      }
+    </style>
+  </head>
+  <body >
+    <div class="page">
+      <!-- Navbar -->
+      <header class="navbar navbar-expand-md navbar-dark navbar-overlap d-print-none">
+        <div class="container-xl">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+            <a href="/">
+                Mastodon Analytics
+            </a>
+          </h1>
+          <div class="navbar-nav flex-row order-md-last">
+            <div class="d-none d-md-flex">
+              <a href="/about" class="nav-link px-0 hide-theme-dark" title="About Mastodon Analytics" data-bs-toggle="tooltip"
+		   data-bs-placement="bottom">
+                <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-question-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M12 16v.01"></path>
+                    <path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483"></path>
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+                 </svg>
+            </a>
+            </div>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-menu">
+            <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="./" >
+                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                    </span>
+                    <span class="nav-link-title">
+                      Home
+                    </span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/" >
+                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-histogram" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M3 3v18h18"></path>
+                            <path d="M20 18v3"></path>
+                            <path d="M16 16v5"></path>
+                            <path d="M12 13v8"></path>
+                            <path d="M8 16v5"></path>
+                            <path d="M3 11c6 0 5 -5 9 -5s3 5 9 5"></path>
+                         </svg>                 
+                    </span>
+                    <span class="nav-link-title">
+                      More Analytics
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="page-wrapper">
+        <!-- Page header -->
+        <div class="page-header d-print-none text-white">
+          <div class="container-xl">
+            <div class="row g-2 align-items-center">
+              <div class="col">
+                <!-- Page pre-title -->
+                <div class="page-pretitle">
+                  Analytics
+                </div>
+                <h2 class="page-title">
+                  Mastodon Analytics
+                </h2>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- Page body -->
+        <div class="page-body">
+          <div class="container-xl">
+            <div class="row row-deck row-cards">
+
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title">Mastodon Number of Users</h3>
+                    <div id="chart-users" class="chart-lg"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-lg-8">
+
+                <div class="card">
+                    <div class="card-body">
+                      <h3 class="card-title">Mastodon Active Users</h3>
+                      <div id="chart-active-users" class="chart-lg"></div>
+                    </div>
+                  </div>  
+              </div>
+
+              <div class="col-md-6 col-lg-4">
+
+                <div class="card">
+                    <div class="card-body">
+                      <h3 class="card-title">Mastodon Servers Count</h3>
+                      <div id="server-count" class="chart-lg"></div>
+                    </div>
+                  </div>  
+
+            </div>
+
+            </div>
+          </div>
+        </div>
+        <footer class="footer footer-transparent d-print-none">
+          <div class="container-xl">
+            <div class="row text-center align-items-center flex-row-reverse">
+              <div class="col-lg-auto ms-lg-auto">
+              </div>
+              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New report</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" name="example-text-input" placeholder="Your report name">
+            </div>
+            <label class="form-label">Report type</label>
+            <div class="form-selectgroup-boxes row mb-3">
+              <div class="col-lg-6">
+                <label class="form-selectgroup-item">
+                  <input type="radio" name="report-type" value="1" class="form-selectgroup-input" checked>
+                  <span class="form-selectgroup-label d-flex align-items-center p-3">
+                    <span class="me-3">
+                      <span class="form-selectgroup-check"></span>
+                    </span>
+                    <span class="form-selectgroup-label-content">
+                      <span class="form-selectgroup-title strong mb-1">Simple</span>
+                      <span class="d-block text-muted">Provide only basic data needed for the report</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <div class="col-lg-6">
+                <label class="form-selectgroup-item">
+                  <input type="radio" name="report-type" value="1" class="form-selectgroup-input">
+                  <span class="form-selectgroup-label d-flex align-items-center p-3">
+                    <span class="me-3">
+                      <span class="form-selectgroup-check"></span>
+                    </span>
+                    <span class="form-selectgroup-label-content">
+                      <span class="form-selectgroup-title strong mb-1">Advanced</span>
+                      <span class="d-block text-muted">Insert charts and additional advanced analyses to be inserted in the report</span>
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="mb-3">
+                  <label class="form-label">Report url</label>
+                  <div class="input-group input-group-flat">
+                    <span class="input-group-text">
+                      https://tabler.io/reports/
+                    </span>
+                    <input type="text" class="form-control ps-0"  value="report-01" autocomplete="off">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="mb-3">
+                  <label class="form-label">Visibility</label>
+                  <select class="form-select">
+                    <option value="1" selected>Private</option>
+                    <option value="2">Public</option>
+                    <option value="3">Hidden</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Client name</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3">
+                  <label class="form-label">Reporting period</label>
+                  <input type="date" class="form-control">
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div>
+                  <label class="form-label">Additional information</label>
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+              Cancel
+            </a>
+            <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+              <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></svg>
+              Create new report
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Libs JS -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!-- Tabler Core -->
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+
+    <script>
+
+
+    analytics = [
+        {"period":"2022-09-30T00:00:00.000+00:00","server_count":"2829","user_count":"3605039","active_user_count":"470403"},{"period":"2022-10-01T00:00:00.000+00:00","server_count":"2830","user_count":"3605684","active_user_count":"470799"},{"period":"2022-10-02T00:00:00.000+00:00","server_count":"2822","user_count":"3607107","active_user_count":"470914"},{"period":"2022-10-03T00:00:00.000+00:00","server_count":"2825","user_count":"3608231","active_user_count":"397138"},{"period":"2022-10-04T00:00:00.000+00:00","server_count":"2817","user_count":"3609492","active_user_count":"397392"},{"period":"2022-10-05T00:00:00.000+00:00","server_count":"2826","user_count":"3555038","active_user_count":"400142"},{"period":"2022-10-06T00:00:00.000+00:00","server_count":"2821","user_count":"3558111","active_user_count":"403908"},{"period":"2022-10-07T00:00:00.000+00:00","server_count":"2833","user_count":"3607938","active_user_count":"405108"},{"period":"2022-10-08T00:00:00.000+00:00","server_count":"2824","user_count":"3608413","active_user_count":"406435"},{"period":"2022-10-09T00:00:00.000+00:00","server_count":"2843","user_count":"3606890","active_user_count":"406757"},{"period":"2022-10-10T00:00:00.000+00:00","server_count":"2842","user_count":"3609407","active_user_count":"360412"},{"period":"2022-10-11T00:00:00.000+00:00","server_count":"2860","user_count":"3611764","active_user_count":"362067"},{"period":"2022-10-12T00:00:00.000+00:00","server_count":"2862","user_count":"3616698","active_user_count":"364588"},{"period":"2022-10-13T00:00:00.000+00:00","server_count":"2861","user_count":"3618085","active_user_count":"365401"},{"period":"2022-10-14T00:00:00.000+00:00","server_count":"2855","user_count":"3572286","active_user_count":"367020"},{"period":"2022-10-15T00:00:00.000+00:00","server_count":"2853","user_count":"3573878","active_user_count":"368486"},{"period":"2022-10-16T00:00:00.000+00:00","server_count":"2858","user_count":"3575381","active_user_count":"368290"},{"period":"2022-10-17T00:00:00.000+00:00","server_count":"2869","user_count":"3575376","active_user_count":"356682"},{"period":"2022-10-18T00:00:00.000+00:00","server_count":"2864","user_count":"3576825","active_user_count":"356818"},{"period":"2022-10-19T00:00:00.000+00:00","server_count":"2870","user_count":"3578645","active_user_count":"358009"},{"period":"2022-10-20T00:00:00.000+00:00","server_count":"2866","user_count":"3580505","active_user_count":"359022"},{"period":"2022-10-21T00:00:00.000+00:00","server_count":"2860","user_count":"3582208","active_user_count":"359882"},{"period":"2022-10-22T00:00:00.000+00:00","server_count":"2854","user_count":"3584600","active_user_count":"361864"},{"period":"2022-10-23T00:00:00.000+00:00","server_count":"2859","user_count":"3586608","active_user_count":"366395"},{"period":"2022-10-24T00:00:00.000+00:00","server_count":"2853","user_count":"3589552","active_user_count":"360244"},{"period":"2022-10-25T00:00:00.000+00:00","server_count":"2862","user_count":"3591245","active_user_count":"361397"},
+        {"period":"2022-10-26T00:00:00.000+00:00","server_count":"2862","user_count":"3594472","active_user_count":"364871"},{"period":"2022-10-27T00:00:00.000+00:00","server_count":"2874","user_count":"3598722","active_user_count":"370360"},{"period":"2022-10-28T00:00:00.000+00:00","server_count":"2877","user_count":"3606754","active_user_count":"381167"},{"period":"2022-10-29T00:00:00.000+00:00","server_count":"2962","user_count":"3656265","active_user_count":"452016"},{"period":"2022-10-30T00:00:00.000+00:00","server_count":"2963","user_count":"3690437","active_user_count":"496010"},{"period":"2022-10-31T00:00:00.000+00:00","server_count":"3088","user_count":"3723223","active_user_count":"528916"},{"period":"2022-11-01T00:00:00.000+00:00","server_count":"3088","user_count":"3761979","active_user_count":"572392"},{"period":"2022-11-02T00:00:00.000+00:00","server_count":"3311","user_count":"3798152","active_user_count":"608837"},{"period":"2022-11-03T00:00:00.000+00:00","server_count":"3308","user_count":"3833368","active_user_count":"655376"},{"period":"2022-11-04T00:00:00.000+00:00","server_count":"3311","user_count":"3812125","active_user_count":"683363"},{"period":"2022-11-05T00:00:00.000+00:00","server_count":"3549","user_count":"3870983","active_user_count":"740722"},{"period":"2022-11-06T00:00:00.000+00:00","server_count":"3550","user_count":"3970007","active_user_count":"863096"},{"period":"2022-11-07T00:00:00.000+00:00","server_count":"4053","user_count":"4105507","active_user_count":"1044405"},{"period":"2022-11-08T00:00:00.000+00:00","server_count":"4023","user_count":"4239565","active_user_count":"1194896"},{"period":"2022-11-09T00:00:00.000+00:00","server_count":"4631","user_count":"4367254","active_user_count":"1325550"},{"period":"2022-11-10T00:00:00.000+00:00","server_count":"4609","user_count":"4455121","active_user_count":"1460507"},{"period":"2022-11-11T00:00:00.000+00:00","server_count":"5228","user_count":"4530762","active_user_count":"1543628"},{"period":"2022-11-12T00:00:00.000+00:00","server_count":"5197","user_count":"4613240","active_user_count":"1638202"},{"period":"2022-11-13T00:00:00.000+00:00","server_count":"5703","user_count":"4681940","active_user_count":"1719592"},{"period":"2022-11-14T00:00:00.000+00:00","server_count":"5697","user_count":"4747221","active_user_count":"1785710"},{"period":"2022-11-15T00:00:00.000+00:00","server_count":"6104","user_count":"4794235","active_user_count":"1835815"},{"period":"2022-11-16T00:00:00.000+00:00","server_count":"6079","user_count":"4842593","active_user_count":"1850396"},{"period":"2022-11-17T00:00:00.000+00:00","server_count":"6037","user_count":"4881134","active_user_count":"1920151"},{"period":"2022-11-18T00:00:00.000+00:00","server_count":"6020","user_count":"4938856","active_user_count":"1958366"},{"period":"2022-11-19T00:00:00.000+00:00","server_count":"6002","user_count":"4932736","active_user_count":"2223817"},{"period":"2022-11-20T00:00:00.000+00:00","server_count":"7138","user_count":"5045034","active_user_count":"2321529"},{"period":"2022-11-21T00:00:00.000+00:00","server_count":"7119","user_count":"5144773","active_user_count":"2446507"},{"period":"2022-11-22T00:00:00.000+00:00","server_count":"7690","user_count":"5206070","active_user_count":"2475160"},{"period":"2022-11-23T00:00:00.000+00:00","server_count":"7649","user_count":"5249225","active_user_count":"2527469"},{"period":"2022-11-24T00:00:00.000+00:00","server_count":"8012","user_count":"5282884","active_user_count":"2565903"}, 
+        {"period":"2022-11-25T00:00:00.000+00:00","server_count":"7969","user_count":"5295488","active_user_count":"2572087"},{"period":"2022-11-26T00:00:00.000+00:00","server_count":"8196","user_count":"5316651","active_user_count":"2592483"},{"period":"2022-11-27T00:00:00.000+00:00","server_count":"8172","user_count":"5332392","active_user_count":"2603092"},{"period":"2022-11-28T00:00:00.000+00:00","server_count":"8376","user_count":"5354048","active_user_count":"2584189"},{"period":"2022-11-29T00:00:00.000+00:00","server_count":"8320","user_count":"5369945","active_user_count":"2608527"},{"period":"2022-11-30T00:00:00.000+00:00","server_count":"8496","user_count":"5387503","active_user_count":"2624121"},{"period":"2022-12-01T00:00:00.000+00:00","server_count":"8451","user_count":"5401399","active_user_count":"2617550"},{"period":"2022-12-02T00:00:00.000+00:00","server_count":"8401","user_count":"5387146","active_user_count":"2527166"},{"period":"2022-12-03T00:00:00.000+00:00","server_count":"8666","user_count":"5404186","active_user_count":"2536166"},{"period":"2022-12-04T00:00:00.000+00:00","server_count":"8606","user_count":"5412393","active_user_count":"2524632"},{"period":"2022-12-05T00:00:00.000+00:00","server_count":"8751","user_count":"5421536","active_user_count":"2478291"},{"period":"2022-12-06T00:00:00.000+00:00","server_count":"8678","user_count":"5423031","active_user_count":"2424002"},{"period":"2022-12-09T00:00:00.000+00:00","server_count":"8633","user_count":"5446000","active_user_count":"2278703"},{"period":"2022-12-10T00:00:00.000+00:00","server_count":"8601","user_count":"5459676","active_user_count":"2244654"},{"period":"2022-12-11T00:00:00.000+00:00","server_count":"8831","user_count":"5465362","active_user_count":"2222843"},{"period":"2022-12-12T00:00:00.000+00:00","server_count":"8805","user_count":"5474864","active_user_count":"2163975"},{"period":"2022-12-13T00:00:00.000+00:00","server_count":"8832","user_count":"5489594","active_user_count":"2156463"},{"period":"2022-12-14T00:00:00.000+00:00","server_count":"8823","user_count":"5499419","active_user_count":"2131380"},{"period":"2022-12-15T00:00:00.000+00:00","server_count":"8774","user_count":"5513782","active_user_count":"2085437"},{"period":"2022-12-16T00:00:00.000+00:00","server_count":"8781","user_count":"5522707","active_user_count":"2081843"},{"period":"2022-12-17T00:00:00.000+00:00","server_count":"8749","user_count":"5614698","active_user_count":"2009012"},{"period":"2022-12-18T00:00:00.000+00:00","server_count":"9112","user_count":"5651256","active_user_count":"1976928"},{"period":"2022-12-19T00:00:00.000+00:00","server_count":"9101","user_count":"5677157","active_user_count":"1937158"},{"period":"2022-12-20T00:00:00.000+00:00","server_count":"9060","user_count":"5719462","active_user_count":"1944730"},{"period":"2022-12-21T00:00:00.000+00:00","server_count":"9030","user_count":"5742625","active_user_count":"1925944"},{"period":"2022-12-22T00:00:00.000+00:00","server_count":"9513","user_count":"5765503","active_user_count":"1922977"},{"period":"2022-12-23T00:00:00.000+00:00","server_count":"9469","user_count":"5777251","active_user_count":"1913432"},
+        {"period":"2022-12-24T00:00:00.000+00:00","server_count":"9599","user_count":"5788763.0","active_user_count":"1904004.0"},{"period":"2022-12-25T00:00:00.000+00:00","server_count":"9573","user_count":"5796234.0","active_user_count":"1891191.0"},{"period":"2022-12-26T00:00:00.000+00:00","server_count":"9635","user_count":"5805685.0","active_user_count":"1860760.0"},{"period":"2022-12-27T00:00:00.000+00:00","server_count":"9602","user_count":"5810920.0","active_user_count":"1843906.0"},{"period":"2022-12-28T00:00:00.000+00:00","server_count":"9561","user_count":"5817860.0","active_user_count":"1831291.0"},{"period":"2022-12-29T00:00:00.000+00:00","server_count":"9517","user_count":"5829411.0","active_user_count":"1823027.0"},{"period":"2022-12-30T00:00:00.000+00:00","server_count":"9706","user_count":"5838743.0","active_user_count":"1819260.0"},{"period":"2022-12-31T00:00:00.000+00:00","server_count":"9686","user_count":"5844024.0","active_user_count":"1820710.0"},{"period":"2023-01-01T00:00:00.000+00:00","server_count":"9743","user_count":"5875129.0","active_user_count":"1816417.0"},{"period":"2023-01-02T00:00:00.000+00:00","server_count":"9743","user_count":"5883342.0","active_user_count":"1813291.0"},{"period":"2023-01-03T00:00:00.000+00:00","server_count":"9778","user_count":"5894174.0","active_user_count":"1796032.0"},{"period":"2023-01-04T00:00:00.000+00:00","server_count":"9767","user_count":"5899981.0","active_user_count":"1795423.0"},{"period":"2023-01-05T00:00:00.000+00:00","server_count":"9799","user_count":"5907345.0","active_user_count":"1791619.0"},{"period":"2023-01-06T00:00:00.000+00:00","server_count":"9792","user_count":"5913832.0","active_user_count":"1787112.0"},{"period":"2023-01-07T00:00:00.000+00:00","server_count":"9833","user_count":"5919524.0","active_user_count":"1783256.0"},{"period":"2023-01-08T00:00:00.000+00:00","server_count":"9840","user_count":"5923302.0","active_user_count":"1779947.0"},{"period":"2023-01-09T00:00:00.000+00:00","server_count":"9844","user_count":"5927419.0","active_user_count":"1761350.0"},{"period":"2023-01-10T00:00:00.000+00:00","server_count":"9852","user_count":"5931881.0","active_user_count":"1758147.0"},{"period":"2023-01-11T00:00:00.000+00:00","server_count":"9804","user_count":"5934418.0","active_user_count":"1742135.0"},{"period":"2023-01-12T00:00:00.000+00:00","server_count":"9881","user_count":"5940037.0","active_user_count":"1731995.0"},{"period":"2023-01-13T00:00:00.000+00:00","server_count":"9945","user_count":"5956074.0","active_user_count":"1728681.0"},{"period":"2023-01-14T00:00:00.000+00:00","server_count":"9969","user_count":"5961575.0","active_user_count":"1664881.0"},{"period":"2023-01-15T00:00:00.000+00:00","server_count":"9942","user_count":"6261109.0","active_user_count":"1705918.0"},{"period":"2023-01-16T00:00:00.000+00:00","server_count":"9920","user_count":"6265924.0","active_user_count":"1644476.0"},{"period":"2023-01-17T00:00:00.000+00:00","server_count":"9892","user_count":"6271827.0","active_user_count":"1616640.0"},{"period":"2023-01-18T00:00:00.000+00:00","server_count":"9876","user_count":"6277087.0","active_user_count":"1568309.0"},{"period":"2023-01-19T00:00:00.000+00:00","server_count":"9845","user_count":"6289037.0","active_user_count":"1552538.0"},{"period":"2023-01-20T00:00:00.000+00:00","server_count":"9829","user_count":"5998967.0","active_user_count":"1470842.0"},{"period":"2023-01-21T00:00:00.000+00:00","server_count":"9810","user_count":"6006576.0","active_user_count":"1463988.0"},{"period":"2023-01-22T00:00:00.000+00:00","server_count":"9780","user_count":"6008298.0","active_user_count":"1455339.0"},{"period":"2023-01-23T00:00:00.000+00:00","server_count":"9760","user_count":"6013281.0","active_user_count":"1437246.0"},{"period":"2023-01-24T00:00:00.000+00:00","server_count":"9742","user_count":"6017874.0","active_user_count":"1427829.0"}
+    ]
+
+    let totalServerCount = 0;
+    period = [];
+    server_count = [];
+    user_count = [];
+    active_user_count = [];
+    
+    for (const data of analytics) {
+        period.push(data.period);
+        server_count.push(data.server_count);
+        user_count.push(data.user_count);
+        active_user_count.push(data.active_user_count);
+    }
+
+    
+   // @formatter:off
+   document.addEventListener("DOMContentLoaded", function () {
+      	window.ApexCharts && (new ApexCharts(document.getElementById('chart-users'), {
+      		chart: {
+      			type: "line",
+      			fontFamily: 'inherit',
+      			height: 320,
+      			parentHeightOffset: 0,
+      			toolbar: {
+      				show: false,
+      			},
+      			animations: {
+      				enabled: false
+      			},
+      		},
+      		plotOptions: {
+      			bar: {
+      				columnWidth: '50%',
+      			}
+      		},
+      		dataLabels: {
+      			enabled: false,
+      		},
+      		fill: {
+      			opacity: 1,
+      		},
+      		series: [
+                {
+                    name: "Users",
+                    data: user_count
+      		    },
+
+            ],
+      		tooltip: {
+      			theme: 'dark'
+      		},
+      		grid: {
+      			padding: {
+      				top: -20,
+      				right: 0,
+      				left: -4,
+      				bottom: -4
+      			},
+      			strokeDashArray: 4,
+      		},
+      		xaxis: {
+      			labels: {
+      				padding: 0,
+      			},
+      			tooltip: {
+      				enabled: false
+      			},
+      			axisBorder: {
+      				show: false,
+      			},
+                type: 'datetime',
+      		},
+      		yaxis: {
+
+      			labels: {
+      				padding: 4,
+                    formatter: function (value) {
+                    return value.toLocaleString();
+                }                                        
+                
+      			},
+      		},
+            labels: period,
+      		colors: [tabler.getColor("primary")],
+      		legend: {
+      			show: false,
+      		},
+      	})).render();
+      });
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+      	window.ApexCharts && (new ApexCharts(document.getElementById('chart-active-users'), {
+      		chart: {
+      			type: "line",
+      			fontFamily: 'inherit',
+      			height: 320,
+      			parentHeightOffset: 0,
+      			toolbar: {
+      				show: false,
+      			},
+      			animations: {
+      				enabled: false
+      			},
+      		},
+      		plotOptions: {
+      			bar: {
+      				columnWidth: '50%',
+      			}
+      		},
+      		dataLabels: {
+      			enabled: false,
+      		},
+      		fill: {
+      			opacity: 1,
+      		},
+      		series: [{
+                    name: "Users",
+                    data: active_user_count
+      		    },
+            ],
+      		tooltip: {
+      			theme: 'dark'
+      		},
+      		grid: {
+      			padding: {
+      				top: -20,
+      				right: 0,
+      				left: -4,
+      				bottom: -4
+      			},
+      			strokeDashArray: 4,
+      		},
+      		xaxis: {
+      			labels: {
+      				padding: 0,
+      			},
+      			tooltip: {
+      				enabled: false
+      			},
+      			axisBorder: {
+      				show: false,
+      			},
+                type: 'datetime',
+      		},
+      		yaxis: {
+      			labels: {
+      				padding: 4,
+                    formatter: function (value) {
+                    return value.toLocaleString();
+                }                                        
+      			},
+      		},
+            labels: period,
+      		colors: [tabler.getColor("primary")],
+      		legend: {
+      			show: false,
+      		},
+      	})).render();
+      });
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+      	window.ApexCharts && (new ApexCharts(document.getElementById('server-count'), {
+      		chart: {
+      			type: "line",
+      			fontFamily: 'inherit',
+      			height: 320,
+      			parentHeightOffset: 0,
+      			toolbar: {
+      				show: false,
+      			},
+      			animations: {
+      				enabled: false
+      			},
+      		},
+      		plotOptions: {
+      			bar: {
+      				columnWidth: '50%',
+      			}
+      		},
+      		dataLabels: {
+      			enabled: false,
+      		},
+      		fill: {
+      			opacity: 1,
+      		},
+      		series: [{
+                    name: "Number of Servers",
+                    data: server_count
+      		    },
+            ],
+      		tooltip: {
+      			theme: 'dark'
+      		},
+      		grid: {
+      			padding: {
+      				top: -20,
+      				right: 0,
+      				left: -4,
+      				bottom: -4
+      			},
+      			strokeDashArray: 4,
+      		},
+      		xaxis: {
+      			labels: {
+      				padding: 0,
+      			},
+      			tooltip: {
+      				enabled: false
+      			},
+      			axisBorder: {
+      				show: false,
+      			},
+                type: 'datetime',
+      		},
+      		yaxis: {
+      			labels: {
+      				padding: 4,
+      			},
+      		},
+            labels: period,
+      		colors: [tabler.getColor("primary")],
+      		legend: {
+      			show: false,
+      		},
+      	})).render();
+      });
+
+
+      // @formatter:on 
+
+    </script>
+  </body>
+</html>
